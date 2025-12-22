@@ -12,11 +12,30 @@ const streetExit: SceneDefinition = {
     {
       label: "Head toward town",
       effect: (state) =>
-        setMessage("Next objective: cash. There’s a bank in town. The night is young.")(state),
-      // Later you can swap this to setScene("bank-atm") when you add it.
+        setMessage(
+          "Next objective: cash. There’s a bank in town. The night is young."
+        )(state),
     },
   ],
-  objects: [],
+  objects: [
+    {
+      id: "car-side-mirror",
+      name: "Side mirror",
+      description: "A perfect spot to check how I look like",
+      boundingBox: {
+        x: 0.6,
+        y: 0.42,
+        width: 0.13,
+        height: 0.08,
+      },
+      interactions: [
+        {
+          label: "Check reflection",
+          effect: setScene("car-mirror-check"),
+        },
+      ],
+    },
+  ],
 };
 
 export default streetExit;

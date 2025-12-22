@@ -24,7 +24,7 @@ const carMirrorCheck: SceneDefinition = {
           effect: (state) => {
             const dressed =
               state.inventory.includes("stolen-jeans") &&
-              state.inventory.includes("hang-in-there-shirt") &&
+              state.inventory.includes("hang-in-there-t-shirt") &&
               state.inventory.includes("oversized-boots");
 
             if (!dressed) {

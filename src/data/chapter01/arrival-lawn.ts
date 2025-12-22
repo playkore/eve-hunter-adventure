@@ -1,12 +1,12 @@
-import type { SceneDefinition } from "../../../types/scenes";
-import { setMessage, setScene } from "../../../effects/mutators";
+import type { SceneDefinition } from "../../types/scenes";
+import { setMessage, setScene } from "../../effects/mutators";
 
 const arrivalLawn: SceneDefinition = {
   id: "arrival-lawn",
   name: "Arrival",
   description:
     "I materialize on a manicured suburban lawn at 2:32 AM. Naked. Alone. Whoever invented time travel had jokes.",
-  imageSrc: "/scenes/chapter01_clothes/arrival-lawn.png",
+  imageSrc: "/scenes/chapter01/arrival-lawn.png",
   interactions: [
     {
       label: "Scan for cover",
@@ -14,7 +14,7 @@ const arrivalLawn: SceneDefinition = {
         // Optional: if player already has clothes (dev testing), skip ahead.
         const dressed =
           state.inventory.includes("stolen-jeans") &&
-          state.inventory.includes("hang-in-there-shirt");
+          state.inventory.includes("hang-in-there-t-shirt");
         if (dressed) return setScene("car-mirror-check")(state);
 
         return setMessage(

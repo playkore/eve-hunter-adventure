@@ -1,1 +1,1 @@
-export type InventoryItemId = "car-keys" | "city-map" | "duct-tape";
+export type InventoryItemId = "stolen-jeans" | "hang-in-there-t-shirt" | "oversized-boots" | "newspaper-stuffing";

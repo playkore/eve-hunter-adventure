@@ -13,7 +13,7 @@ const streetExit: SceneDefinition = {
       label: "Head toward town",
       effect: (state) =>
         setMessage(
-          "Next objective: cash. There’s a bank in town. The night is young."
+          "Next objective: cash. There’s a bank in town. The night is still young."
         )(state),
     },
   ],
@@ -21,7 +21,7 @@ const streetExit: SceneDefinition = {
     {
       id: "car-side-mirror",
       name: "Side mirror",
-      description: "A perfect spot to check how I look like",
+      description: "A perfect spot to check how I look.",
       boundingBox: {
         x: 0.6,
         y: 0.42,

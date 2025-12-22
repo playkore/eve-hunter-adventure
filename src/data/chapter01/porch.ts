@@ -5,7 +5,7 @@ const porchBoots: SceneDefinition = {
   id: "porch",
   name: "Back Steps & Porch",
   description:
-    "By the back steps: forgotten boots. Nearby: yesterday’s newspaper. Human carelessness is my supply chain.",
+    "By the back steps: forgotten boots. Nearby: yesterday’s newspaper. Human carelessness remains my supply chain.",
   imageSrc: "/scenes/chapter01/porch.png",
   interactions: [
     {
@@ -28,7 +28,7 @@ const porchBoots: SceneDefinition = {
       id: "boots",
       name: "Worn boots",
       description:
-        "Men’s size. Too big. Still better than frostbite and police attention.",
+        "Men’s size. Too big. Still better than frostbite or police attention.",
       visible: (s) => !s.inventory.includes("oversized-boots"),
       imageSrc: "/scenes/chapter01/porch-boots.png",
       boundingBox: { x: 0.5, y: 0.37, width: 0.29, height: 0.14 },

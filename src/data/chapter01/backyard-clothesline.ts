@@ -5,7 +5,7 @@ const backyardClothesline: SceneDefinition = {
   id: "backyard-clothesline",
   name: "Backyard Clothesline",
   description:
-    "Laundry dances on a clothesline in the night breeze. It’s not stylish, but it’s fabric. Fabric is victory.",
+    "Laundry sways on a clothesline in the night breeze. It’s not stylish, but it’s fabric. Fabric is victory.",
   imageSrc: "/scenes/chapter01/backyard-clothesline.png",
   interactions: [
     {
@@ -15,9 +15,9 @@ const backyardClothesline: SceneDefinition = {
           state.inventory.includes("stolen-jeans") &&
           state.inventory.includes("hang-in-there-t-shirt");
         if (!dressed) {
-          return setMessage("Not leaving without clothes. I’m not a tourist.")(
-            state
-          );
+          return setMessage(
+            "Not leaving without clothes. I’m not a tourist attraction."
+          )(state);
         }
         return setScene("porch")(state);
       },
@@ -48,7 +48,7 @@ const backyardClothesline: SceneDefinition = {
       id: "tshirt",
       name: "Cat t-shirt",
       description:
-        "A shirt with a cat dangling from a branch: “HANG IN THERE.” The universe is smug.",
+        "A shirt with a cat dangling from a branch. “HANG IN THERE.” The universe is smug.",
       visible: (s) => !s.inventory.includes("hang-in-there-t-shirt"),
       imageSrc: "/scenes/chapter01/backyard-clothesline-tshirt.png",
       boundingBox: {

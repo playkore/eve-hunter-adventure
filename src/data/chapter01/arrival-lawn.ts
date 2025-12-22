@@ -5,7 +5,7 @@ const arrivalLawn: SceneDefinition = {
   id: "arrival-lawn",
   name: "Arrival",
   description:
-    "I materialize on a manicured suburban lawn at 2:32 AM. Naked. Alone. Whoever invented time travel had jokes.",
+    "I materialize on a manicured suburban lawn at 2:32 AM. Naked. Alone. Whoever invented time travel had a sense of humor.",
   imageSrc: "/scenes/chapter01/arrival-lawn.png",
   interactions: [
     {

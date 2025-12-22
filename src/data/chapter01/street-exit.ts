@@ -11,10 +11,16 @@ const streetExit: SceneDefinition = {
     { label: "Look back", effect: setScene("car-mirror-check") },
     {
       label: "Head toward town",
-      effect: (state) =>
-        setMessage(
+      effect: (state) => {
+        if (!state.flags.disguiseChecked) {
+          return setMessage(
+            "Not yet. One look in a mirror first. I need to know what story my face is telling."
+          )(state);
+        }
+        return setMessage(
           "Next objective: cash. There’s a bank in town. The night is still young."
-        )(state),
+        )(state);
+      },
     },
   ],
   objects: [

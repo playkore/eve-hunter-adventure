@@ -1,5 +1,5 @@
 import type { SceneDefinition } from "../../types/scenes";
-import { addToInventory, setMessage, setScene } from "../../effects/mutators";
+import { addToInventory, setFlag, setMessage, setScene } from "../../effects/mutators";
 
 const porchBoots: SceneDefinition = {
   id: "porch",
@@ -41,7 +41,7 @@ const porchBoots: SceneDefinition = {
       name: "Old newspaper",
       description:
         "Ink, lies, and useful stuffing. Tonight, it’s mostly the third one.",
-      visible: (s) => !s.inventory.includes("newspaper-stuffing"),
+      visible: (s) => !s.flags.bootsStuffed,
       imageSrc: "/scenes/chapter01/porch-newspaper.png",
       boundingBox: { x: 0.06, y: 0.63, width: 0.56, height: 0.22 },
       interactions: [
@@ -53,7 +53,7 @@ const porchBoots: SceneDefinition = {
                 "Stuffing is pointless without boots. Acquire boots first."
               )(state);
             }
-            return addToInventory("newspaper-stuffing")(state);
+            return setFlag("bootsStuffed")(state);
           },
         },
       ],

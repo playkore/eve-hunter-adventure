@@ -1,5 +1,5 @@
 import type { SceneDefinition } from "../../types/scenes";
-import { setMessage, setScene } from "../../effects/mutators";
+import { setFlag, setMessage, setScene } from "../../effects/mutators";
 
 const carMirrorCheck: SceneDefinition = {
   id: "car-mirror-check",
@@ -22,12 +22,13 @@ const carMirrorCheck: SceneDefinition = {
         {
           label: "Confirm disguise",
           effect: (state) => {
-            const stuffed = state.inventory.includes("newspaper-stuffing");
+            const stuffed = state.flags.bootsStuffed;
+            const nextState = setFlag("disguiseChecked")(state);
             return setMessage(
               stuffed
                 ? "Disguise acceptable. Boots still ridiculous, but less dangerous."
                 : "Disguise acceptable. Boots are too big. Consider stuffing them."
-            )(state);
+            )(nextState);
           },
         },
       ],

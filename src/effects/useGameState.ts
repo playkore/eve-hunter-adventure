@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { initialSceneId, type SceneId } from "../data/scenes";
 import { ObjectInteraction } from "../types/scenes";
 import { InventoryItemId } from "../types/inventory";
+import { defaultFlagsState, FlagsState } from "../types/flags";
 
 export type GameStateLook = "neutral" | "happy" | "angry";
 
@@ -10,6 +11,7 @@ export type GameState = {
   chairFixed: boolean;
   hasDuctTape: boolean;
   inventory: InventoryItemId[];
+  flags: FlagsState;
   message: string | null;
   look: GameStateLook;
 };
@@ -19,6 +21,7 @@ const createInitialGameState = (): GameState => ({
   chairFixed: false,
   hasDuctTape: false,
   inventory: [],
+  flags: { ...defaultFlagsState },
   message: null,
   look: "neutral",
 });
@@ -27,6 +30,23 @@ const isValidLook = (value: unknown): value is GameStateLook =>
   value === "neutral" || value === "happy" || value === "angry";
 
 const STORAGE_KEY = "eve-hunter-adventure/game-state";
+
+const loadFlags = (value: unknown, defaults: FlagsState): FlagsState => {
+  if (!value || typeof value !== "object") {
+    return defaults;
+  }
+  const record = value as Record<string, unknown>;
+  return {
+    bootsStuffed:
+      typeof record.bootsStuffed === "boolean"
+        ? record.bootsStuffed
+        : defaults.bootsStuffed,
+    disguiseChecked:
+      typeof record.disguiseChecked === "boolean"
+        ? record.disguiseChecked
+        : defaults.disguiseChecked,
+  };
+};
 
 const loadStoredGameState = (): GameState => {
   if (typeof window === "undefined") {
@@ -45,6 +65,7 @@ const loadStoredGameState = (): GameState => {
       inventory: Array.isArray(parsed?.inventory)
         ? parsed?.inventory
         : defaults.inventory,
+      flags: loadFlags(parsed?.flags, defaults.flags),
       message:
         typeof parsed?.message === "string" || parsed?.message === null
           ? parsed?.message ?? null

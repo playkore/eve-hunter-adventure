@@ -1,4 +1,4 @@
-# Mission Complete
+# Eve Hunter Adventure
 
 Story-first pixel hunt prototype built with React and Vite. The goal is to let you
 create multiple scene backdrops and wire hotspots inside each scene to branching

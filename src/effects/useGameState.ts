@@ -26,7 +26,7 @@ const createInitialGameState = (): GameState => ({
 const isValidLook = (value: unknown): value is GameStateLook =>
   value === "neutral" || value === "happy" || value === "angry";
 
-const STORAGE_KEY = "mission-complete/game-state";
+const STORAGE_KEY = "eve-hunter-adventure/game-state";
 
 const loadStoredGameState = (): GameState => {
   if (typeof window === "undefined") {

@@ -1,5 +1,10 @@
 import type { SceneDefinition } from "../../types/scenes";
-import { addToInventory, setFlag, setMessage, setScene } from "../../effects/mutators";
+import {
+  addToInventory,
+  setFlag,
+  setMessage,
+  setScene,
+} from "../../effects/mutators";
 
 const porchBoots: SceneDefinition = {
   id: "porch",
@@ -18,6 +23,12 @@ const porchBoots: SceneDefinition = {
         const hasBoots = state.inventory.includes("oversized-boots");
         if (!hasBoots) {
           return setMessage("Bare feet are a liability. Acquire boots.")(state);
+        }
+        const bootsStuffed = state.flags.bootsStuffed;
+        if (!bootsStuffed) {
+          return setMessage(
+            "The boots are too large. Unstuffed, they’re a liability. Paper would fix that."
+          )(state);
         }
         return setScene("street-exit")(state);
       },

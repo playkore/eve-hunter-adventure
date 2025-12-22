@@ -8,8 +8,10 @@ const carMirrorCheck: SceneDefinition = {
     "I check my reflection in a parked car’s side mirror. Baggy clothes. Oversized boots. Runaway teenager: plausible cover.",
   imageSrc: "/scenes/chapter01/car-mirror-check.png",
   interactions: [
-    { label: "Leave the yard", effect: setScene("street-exit") },
-    { label: "Go back to the porch", effect: setScene("porch") },
+    { label: "Get back to the street", effect: (state) => {
+      const nextState = setFlag("disguiseChecked")(state);
+      return setScene("street-exit")(nextState);
+    }},
   ],
   objects: [
     {

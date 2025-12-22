@@ -5,26 +5,35 @@ import type { SceneDefinition } from "../types/scenes";
 
 // Chapter 01
 import arrivalLawn from "./chapter01/arrival-lawn";
+import arrival from "./chapter01/arrival";
 import backyardClothesline from "./chapter01/backyard-clothesline";
 import carMirrorCheck from "./chapter01/car-mirror-check";
 import porch from "./chapter01/porch";
 import streetExit from "./chapter01/street-exit";
 
+// Chapter 02
+import smithtownView from "./chapter02/smithtown-view";
+
 export type SceneId =
   | "arrival-lawn"
+  | "arrival"
   | "backyard-clothesline"
   | "car-mirror-check"
   | "porch"
   | "street-exit"
+  | "smithtown-view"
 ;
 
 export const scenes: SceneDefinition[] = [
   // Chapter 01
   arrivalLawn,
+  arrival,
   backyardClothesline,
   carMirrorCheck,
   porch,
   streetExit,
+  // Chapter 02
+  smithtownView,
 ];
 
-export const initialSceneId: SceneId = "arrival-lawn";
+export const initialSceneId: SceneId = "arrival";

@@ -7,14 +7,14 @@ import type { SceneDefinition } from "../types/scenes";
 import arrivalLawn from "./chapter01/arrival-lawn";
 import backyardClothesline from "./chapter01/backyard-clothesline";
 import carMirrorCheck from "./chapter01/car-mirror-check";
-import porchBoots from "./chapter01/porch-boots";
+import porch from "./chapter01/porch";
 import streetExit from "./chapter01/street-exit";
 
 export type SceneId =
   | "arrival-lawn"
   | "backyard-clothesline"
   | "car-mirror-check"
-  | "porch-boots"
+  | "porch"
   | "street-exit"
 ;
 
@@ -23,7 +23,7 @@ export const scenes: SceneDefinition[] = [
   arrivalLawn,
   backyardClothesline,
   carMirrorCheck,
-  porchBoots,
+  porch,
   streetExit,
 ];
 

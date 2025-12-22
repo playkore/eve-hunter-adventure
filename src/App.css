@@ -78,10 +78,12 @@
 }
 
 .appMenu {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  min-width: 180px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 200px;
+  max-width: calc(100vw - 32px);
   padding: 8px;
   border-radius: var(--radius);
   border: 1px solid rgba(0, 255, 122, 0.25);
@@ -91,6 +93,7 @@
   flex-direction: column;
   gap: 6px;
   z-index: 10;
+  box-sizing: border-box;
 }
 
 .menuItem {

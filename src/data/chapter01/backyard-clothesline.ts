@@ -6,7 +6,7 @@ const backyardClothesline: SceneDefinition = {
   name: "Backyard Clothesline",
   description:
     "Laundry dances on a clothesline in the night breeze. It’s not stylish, but it’s fabric. Fabric is victory.",
-  imageSrc: "/scenes/chapter01_clothes/backyard-clothesline.png",
+  imageSrc: "/scenes/chapter01/backyard-clothesline.png",
   interactions: [
     { label: "Back away", effect: setScene("arrival-lawn") },
     {

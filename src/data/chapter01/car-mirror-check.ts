@@ -6,10 +6,10 @@ const carMirrorCheck: SceneDefinition = {
   name: "Car Mirror",
   description:
     "I check my reflection in a parked car’s side mirror. Baggy clothes, oversized boots. Runaway teenager: plausible cover.",
-  imageSrc: "/scenes/chapter01_clothes/car-mirror-check.png",
+  imageSrc: "/scenes/chapter01/car-mirror-check.png",
   interactions: [
     { label: "Leave the yard", effect: setScene("street-exit") },
-    { label: "Go back to the porch", effect: setScene("porch-boots") },
+    { label: "Go back to the porch", effect: setScene("porch") },
   ],
   objects: [
     {
@@ -22,14 +22,16 @@ const carMirrorCheck: SceneDefinition = {
         {
           label: "Confirm disguise",
           effect: (state) => {
-            const dressed =
-              state.inventory.includes("stolen-jeans") &&
-              state.inventory.includes("hang-in-there-t-shirt") &&
-              state.inventory.includes("oversized-boots");
+            // const dressed =
+            //   state.inventory.includes("stolen-jeans") &&
+            //   state.inventory.includes("hang-in-there-t-shirt") &&
+            //   state.inventory.includes("oversized-boots");
 
-            if (!dressed) {
-              return setMessage("Not convincing yet. I’m missing key components: fabric.")(state);
-            }
+            // if (!dressed) {
+            //   return setMessage(
+            //     "Not convincing yet. I’m missing key components: fabric."
+            //   )(state);
+            // }
 
             const stuffed = state.inventory.includes("newspaper-stuffing");
             return setMessage(

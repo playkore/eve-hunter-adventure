@@ -6,7 +6,7 @@ const streetExit: SceneDefinition = {
   name: "Suburban Street",
   description:
     "Now dressed, I can think about money, transport, and my target. One crisis at a time.",
-  imageSrc: "/scenes/chapter01_clothes/street-exit.png",
+  imageSrc: "/scenes/chapter01/street-exit.png",
   interactions: [
     { label: "Look back", effect: setScene("car-mirror-check") },
     {

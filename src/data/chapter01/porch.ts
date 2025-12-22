@@ -13,13 +13,13 @@ const porchBoots: SceneDefinition = {
       effect: setScene("backyard-clothesline"),
     },
     {
-      label: "Check reflection in the car",
+      label: "Get to the street",
       effect: (state) => {
         const hasBoots = state.inventory.includes("oversized-boots");
         if (!hasBoots) {
           return setMessage("Bare feet are a liability. Acquire boots.")(state);
         }
-        return setScene("car-mirror-check")(state);
+        return setScene("street-exit")(state);
       },
     },
   ],
@@ -31,7 +31,7 @@ const porchBoots: SceneDefinition = {
         "Men’s size. Too big. Still better than frostbite and police attention.",
       visible: (s) => !s.inventory.includes("oversized-boots"),
       imageSrc: "/scenes/chapter01/porch-boots.png",
-      boundingBox: { x: 0.24, y: 0.62, width: 0.36, height: 0.22 },
+      boundingBox: { x: 0.5, y: 0.37, width: 0.29, height: 0.14 },
       interactions: [
         { label: "Take boots", effect: addToInventory("oversized-boots") },
       ],
@@ -43,7 +43,7 @@ const porchBoots: SceneDefinition = {
         "Ink, lies, and useful stuffing. Tonight, it’s mostly the third one.",
       visible: (s) => !s.inventory.includes("newspaper-stuffing"),
       imageSrc: "/scenes/chapter01/porch-newspaper.png",
-      boundingBox: { x: 0.62, y: 0.67, width: 0.28, height: 0.18 },
+      boundingBox: { x: 0.06, y: 0.63, width: 0.56, height: 0.22 },
       interactions: [
         {
           label: "Tear for boot stuffing",

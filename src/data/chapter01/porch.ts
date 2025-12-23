@@ -10,7 +10,7 @@ const porchBoots: SceneDefinition = {
   id: "porch",
   name: "Back Steps & Porch",
   description:
-    "By the back steps: forgotten boots. Nearby: yesterday’s newspaper. Human carelessness remains my supply chain.",
+    "By the back steps: forgotten boots. Human carelessness remains my supply chain.",
   imageSrc: "/scenes/chapter01/porch.png",
   interactions: [
     {
@@ -27,7 +27,7 @@ const porchBoots: SceneDefinition = {
         const bootsStuffed = state.flags.bootsStuffed;
         if (!bootsStuffed) {
           return setMessage(
-            "The boots are too large. Unstuffed, they’re a liability. Paper would fix that."
+            "The boots are too large. Unstuffed, they compromise stability and combat efficiency."
           )(state);
         }
         return setScene("street-exit")(state);
@@ -52,19 +52,21 @@ const porchBoots: SceneDefinition = {
       name: "Old newspaper",
       description:
         "Ink, lies, and useful stuffing. Tonight, it’s mostly the third one.",
-      visible: (s) => !s.flags.bootsStuffed,
       imageSrc: "/scenes/chapter01/porch-newspaper.png",
       boundingBox: { x: 0.06, y: 0.63, width: 0.56, height: 0.22 },
       interactions: [
         {
-          label: "Tear for boot stuffing",
+          label: "Inspect newspaper",
           effect: (state) => {
             if (!state.inventory.includes("oversized-boots")) {
               return setMessage(
-                "Stuffing is pointless without boots. Acquire boots first."
+                "Yesterday's paper. Cheap fiber. Absorbent. Useful in a pinch."
               )(state);
             }
-            return setFlag("bootsStuffed")(state);
+            const nextState = setFlag("bootsStuffed")(state);
+            return setMessage(
+              "Compressible. Disposable. Adequate filler. Boots: stabilized."
+            )(nextState);
           },
         },
       ],

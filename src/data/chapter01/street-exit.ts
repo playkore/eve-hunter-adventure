@@ -11,11 +11,6 @@ const streetExit: SceneDefinition = {
     {
       label: "Head toward town",
       effect: (state) => {
-        if (!state.flags.disguiseChecked) {
-          return setMessage(
-            "Not yet. One look in a mirror first. I need to know what story my face is telling."
-          )(state);
-        }
         return setScene("smithtown-view")(state);
       },
     },

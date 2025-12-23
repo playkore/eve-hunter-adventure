@@ -56,3 +56,12 @@ export const setMessage = (message: string) => {
     };
   };
 };
+
+export const addScore = (points: number) => {
+  return (state: GameState): GameState => {
+    return {
+      ...state,
+      score: state.score + points,
+    };
+  };
+};

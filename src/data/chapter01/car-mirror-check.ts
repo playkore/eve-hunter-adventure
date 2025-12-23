@@ -1,5 +1,5 @@
 import type { SceneDefinition } from "../../types/scenes";
-import { setFlag, setMessage, setScene } from "../../effects/mutators";
+import { addScore, setFlag, setMessage, setScene } from "../../effects/mutators";
 
 const carMirrorCheck: SceneDefinition = {
   id: "car-mirror-check",
@@ -8,10 +8,7 @@ const carMirrorCheck: SceneDefinition = {
     "I check my reflection in a parked car’s side mirror. Baggy clothes. Oversized boots. Runaway teenager: plausible cover.",
   imageSrc: "/scenes/chapter01/car-mirror-check.png",
   interactions: [
-    { label: "Get back to the street", effect: (state) => {
-      const nextState = setFlag("disguiseChecked")(state);
-      return setScene("street-exit")(nextState);
-    }},
+    { label: "Get back to the street", effect: setScene("street-exit") },
   ],
   objects: [
     {
@@ -25,11 +22,13 @@ const carMirrorCheck: SceneDefinition = {
           label: "Confirm disguise",
           effect: (state) => {
             const stuffed = state.flags.bootsStuffed;
-            const nextState = setFlag("disguiseChecked")(state);
+            const checked = state.flags.disguiseChecked;
+            const flaggedState = setFlag("disguiseChecked")(state);
+            const nextState = checked ? flaggedState : addScore(1)(flaggedState);
             return setMessage(
               stuffed
                 ? "Disguise acceptable. Boots still ridiculous, but less dangerous."
-                : "Disguise acceptable. Boots are too big. Consider stuffing them."
+                : "Disguise acceptable. Boot fit still suboptimal."
             )(nextState);
           },
         },

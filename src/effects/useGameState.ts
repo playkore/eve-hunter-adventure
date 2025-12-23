@@ -14,6 +14,7 @@ export type GameState = {
   flags: FlagsState;
   message: string | null;
   look: GameStateLook;
+  score: number;
 };
 
 const createInitialGameState = (): GameState => ({
@@ -24,6 +25,7 @@ const createInitialGameState = (): GameState => ({
   flags: { ...defaultFlagsState },
   message: null,
   look: "neutral",
+  score: 0,
 });
 
 const isValidLook = (value: unknown): value is GameStateLook =>
@@ -71,6 +73,7 @@ const loadStoredGameState = (): GameState => {
           ? parsed?.message ?? null
           : defaults.message,
       look: isValidLook(parsed?.look) ? parsed.look : defaults.look,
+      score: typeof parsed?.score === "number" ? parsed.score : defaults.score,
     };
   } catch (error) {
     console.warn("Failed to parse saved game state", error);

@@ -14,6 +14,9 @@ import streetExit from "./chapter01/street-exit";
 // Chapter 02
 import smithtownView from "./chapter02/smithtown-view";
 
+// Maps
+import smithtownMap from "./maps/smithtown-map";
+
 export type SceneId =
   | "arrival-lawn"
   | "arrival"
@@ -22,6 +25,7 @@ export type SceneId =
   | "porch"
   | "street-exit"
   | "smithtown-view"
+  | "smithtown-map"
 ;
 
 export const scenes: SceneDefinition[] = [
@@ -34,6 +38,8 @@ export const scenes: SceneDefinition[] = [
   streetExit,
   // Chapter 02
   smithtownView,
+  // Maps
+  smithtownMap,
 ];
 
 export const initialSceneId: SceneId = "arrival";

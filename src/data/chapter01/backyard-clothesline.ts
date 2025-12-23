@@ -1,34 +1,31 @@
 import type { SceneDefinition } from "../../types/scenes";
-import { addToInventory, setMessage, setScene } from "../../effects/mutators";
 
 const backyardClothesline: SceneDefinition = {
   id: "backyard-clothesline",
   name: "Backyard Clothesline",
-  description:
-    "Laundry sways on a clothesline in the night breeze. It’s not stylish, but it’s fabric. Fabric is victory.",
+  description: "Задний двор. Неплохо, как временное укрытие.",
   imageSrc: "/scenes/chapter01/backyard-clothesline.png",
   interactions: [
     {
-      label: "Go to the porch steps",
-      effect: (state) => {
+      label: "Пробраться к крыльцу дома",
+      effect: (wrapper) => {
         const dressed =
-          state.inventory.includes("stolen-jeans") &&
-          state.inventory.includes("hang-in-there-t-shirt");
+          wrapper.getState().inventory.includes("stolen-jeans") &&
+          wrapper.getState().inventory.includes("hang-in-there-t-shirt");
         if (!dressed) {
-          return setMessage(
-            "Not leaving without clothes. I’m not a tourist attraction."
-          )(state);
+          wrapper.setMessage("Пожалуй, не буду высовываться, пока не оденусь.");
+          return;
         }
-        return setScene("porch")(state);
+        return wrapper.setScene("porch");
       },
     },
   ],
   objects: [
     {
       id: "jeans",
-      name: "Baggy jeans",
+      name: "Широкие джинсы",
       description:
-        "Loose and clearly not my size. Good. I’m not trying to look like me.",
+        "Джинсы, свободные и явно не моего размера. Возможно, в 80-х это модно.",
       visible: (s) => !s.inventory.includes("stolen-jeans"),
       imageSrc: "/scenes/chapter01/backyard-clothesline-jeans.png",
       boundingBox: {
@@ -39,16 +36,16 @@ const backyardClothesline: SceneDefinition = {
       },
       interactions: [
         {
-          label: "Take jeans",
-          effect: addToInventory("stolen-jeans"),
+          label: "Надеть джинсы",
+          effect: (wrapper) => wrapper.addToInventory("stolen-jeans"),
         },
       ],
     },
     {
       id: "tshirt",
-      name: "Cat t-shirt",
+      name: "Футболка с котом",
       description:
-        "A shirt with a cat dangling from a branch. “HANG IN THERE.” The universe is smug.",
+        'Футболка с котом. Примечательно, что оба висят на веревках. Написано "Держись". Я стараюсь, милый котенок, я стараюсь.',
       visible: (s) => !s.inventory.includes("hang-in-there-t-shirt"),
       imageSrc: "/scenes/chapter01/backyard-clothesline-tshirt.png",
       boundingBox: {
@@ -59,8 +56,8 @@ const backyardClothesline: SceneDefinition = {
       },
       interactions: [
         {
-          label: "Take t-shirt",
-          effect: addToInventory("hang-in-there-t-shirt"),
+          label: "Надеть футболку",
+          effect: (wrapper) => wrapper.addToInventory("hang-in-there-t-shirt"),
         },
       ],
     },

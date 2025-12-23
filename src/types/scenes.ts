@@ -1,7 +1,8 @@
 import { GameState } from "../effects/useGameState";
 import type { SceneId } from "../data/scenes";
+import { GameStateWrapper } from "../effects/gameStateWrapper";
 
-type SceneEffectCommandFunction = (state: GameState) => GameState;
+type SceneEffectCommandFunction = (stateWrapper: GameStateWrapper) => void;
 export interface ObjectInteraction {
   label: string;
   effect: SceneEffectCommandFunction;

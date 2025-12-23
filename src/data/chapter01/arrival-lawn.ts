@@ -1,16 +1,15 @@
 import type { SceneDefinition } from "../../types/scenes";
-import { setScene } from "../../effects/mutators";
 
 const arrivalLawn: SceneDefinition = {
   id: "arrival-lawn",
-  name: "Arrival",
+  name: "Прибытие",
   description:
-    "I materialize on a manicured suburban lawn at 2:32 AM. Naked. Alone. Whoever invented time travel had a sense of humor.",
+    "... Шар исчезает, я растягиваюсь на траве. Голая. У того, кто придумал путешествия во времени, дурацкое чувство юмора. Поэтому нас выбрасывают ночью.",
   imageSrc: "/scenes/chapter01/arrival-lawn.png",
   interactions: [
     {
-      label: "Scan for cover",
-      effect: setScene("backyard-clothesline"),
+      label: "Искать укрытие, пока меня не заметили",
+      effect: (wrapper) => wrapper.setScene("backyard-clothesline"),
     },
   ],
   objects: [],

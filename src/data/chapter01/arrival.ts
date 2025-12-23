@@ -1,16 +1,15 @@
 import type { SceneDefinition } from "../../types/scenes";
-import { setScene } from "../../effects/mutators";
 
 const arrivalLawn: SceneDefinition = {
   id: "arrival",
   name: "Arrival",
   description:
-    "A flash of light...",
+    "Ослепительная вспышка... На секунду мне кажется, что я вижу себя со стороны, висящей в центре шара, состоящего из чистой энергии...",
   imageSrc: "/scenes/chapter01/arrival.png",
   interactions: [
     {
-      label: "Start a new game",
-      effect: setScene("arrival-lawn"),
+      label: "Глава 1. Прибытие",
+      effect: (wrapper) => wrapper.setScene("arrival-lawn"),
     },
   ],
   objects: [],

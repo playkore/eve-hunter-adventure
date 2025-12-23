@@ -3,6 +3,7 @@ import { initialSceneId, type SceneId } from "../data/scenes";
 import { ObjectInteraction } from "../types/scenes";
 import { InventoryItemId } from "../types/inventory";
 import { defaultFlagsState, FlagsState } from "../types/flags";
+import { GameStateWrapper } from "./gameStateWrapper";
 
 export type GameStateLook = "neutral" | "happy" | "angry";
 
@@ -97,14 +98,11 @@ export const useGameState = () => {
 
   const executeEffect = (objectInteraction: ObjectInteraction) => {
     setGameState((oldState: GameState) => {
-      const nextState = objectInteraction.effect({
-        ...oldState,
-        message: null,
-      });
-
+      const wrapper = new GameStateWrapper(oldState);
+      objectInteraction.effect(wrapper);
+      const nextState = wrapper.getState();
       return {
         ...nextState,
-        message: nextState.message ?? null,
       };
     });
   };

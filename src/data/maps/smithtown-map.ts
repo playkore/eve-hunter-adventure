@@ -1,5 +1,4 @@
 import type { SceneDefinition } from "../../types/scenes";
-import { setScene } from "../../effects/mutators";
 
 const smithtownMap: SceneDefinition = {
   id: "smithtown-map",
@@ -14,7 +13,10 @@ const smithtownMap: SceneDefinition = {
       description: "A modest transit hub on the edge of town.",
       boundingBox: { x: 0.06, y: 0.18, width: 0.28, height: 0.14 },
       interactions: [
-        { label: "Check bus station", effect: setScene("smithtown-map") },
+        {
+          label: "Check bus station",
+          effect: (w) => w.setScene("smithtown-map"),
+        },
       ],
     },
     {
@@ -23,7 +25,10 @@ const smithtownMap: SceneDefinition = {
       description: "The civic center sits near the river.",
       boundingBox: { x: 0.56, y: 0.43, width: 0.2, height: 0.16 },
       interactions: [
-        { label: "Check city hall", effect: setScene("smithtown-map") },
+        {
+          label: "Check city hall",
+          effect: (w) => w.setScene("smithtown-map"),
+        },
       ],
     },
     {
@@ -32,7 +37,7 @@ const smithtownMap: SceneDefinition = {
       description: "The tallest building in the skyline.",
       boundingBox: { x: 0.67, y: 0.16, width: 0.23, height: 0.2 },
       interactions: [
-        { label: "Check bank", effect: setScene("smithtown-map") },
+        { label: "Check bank", effect: (w) => w.setScene("smithtown-map") },
       ],
     },
     {
@@ -43,7 +48,7 @@ const smithtownMap: SceneDefinition = {
       interactions: [
         {
           label: "Check Lawrence Avenue",
-          effect: setScene("smithtown-map"),
+          effect: (w) => w.setScene("smithtown-map"),
         },
       ],
     },

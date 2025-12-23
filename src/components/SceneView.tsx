@@ -1,4 +1,4 @@
-import type { MouseEvent as ReactMouseEvent } from "react";
+import type { MouseEvent as ReactMouseEvent, ReactNode } from "react";
 import type {
   ObjectInteraction,
   SceneDefinition,
@@ -19,6 +19,7 @@ export interface SceneViewProps {
   descriptionText: string | null;
   interactions: ObjectInteraction[];
   onInteractionSelect: (interaction: ObjectInteraction) => void;
+  menuAction?: ReactNode;
 }
 
 const SceneView = ({
@@ -29,6 +30,7 @@ const SceneView = ({
   descriptionText,
   interactions,
   onInteractionSelect,
+  menuAction,
 }: SceneViewProps) => {
   const { isLoading, loadedCount, totalCount } = useSceneAssetsLoading(scene);
   const progressPercent =
@@ -66,7 +68,7 @@ const SceneView = ({
           draggable="false"
         />
         <SceneDescriptionOverlay text={descriptionText} />
-        {interactions.length > 0 && (
+        {(interactions.length > 0 || menuAction) && (
           <div className="sceneActionsOverlay">
             <div className="sceneActionsList" role="group">
               {interactions.map((interaction, index) => (
@@ -79,6 +81,9 @@ const SceneView = ({
                   <strong>{interaction.label}</strong>
                 </button>
               ))}
+              {menuAction && (
+                <div className="sceneActionMenu">{menuAction}</div>
+              )}
             </div>
           </div>
         )}

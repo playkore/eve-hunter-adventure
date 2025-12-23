@@ -96,6 +96,11 @@
   border-radius: 999px;
 }
 
+.sceneActionMenu {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
 .sceneActionButton {
   appearance: none;
   border: 1px solid rgba(0, 255, 122, 0.45);
@@ -116,6 +121,12 @@
 
 .sceneActionButton strong {
   font-size: 0.95rem;
+}
+
+.sceneActionButton--menu {
+  flex: 0 0 auto;
+  padding: 12px;
+  width: 44px;
 }
 
 .sceneActionButton:focus-visible {

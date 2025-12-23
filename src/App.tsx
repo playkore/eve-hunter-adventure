@@ -118,35 +118,32 @@ const App = () => {
     };
   }, [isMenuOpen]);
 
-  const menu = (
-    <div className="menuGlobalSlot">
-      <div className="menuControls" ref={menuWrapperRef}>
-        <button
-          type="button"
-          className="menuTrigger"
-          aria-haspopup="true"
-          aria-expanded={isMenuOpen}
-          onClick={handleMenuToggle}
-          aria-label="Game menu"
-        >
-          <span className="menuTriggerDots" aria-hidden="true" />
-          Menu
-        </button>
-        {isMenuOpen && (
-          <div className="appMenu" role="menu" aria-label="Game menu">
-            <button type="button" className="menuItem" onClick={handleNewGame}>
-              New game
-            </button>
-            <button
-              type="button"
-              className="menuItem"
-              onClick={handleOpenSceneEditor}
-            >
-              DEV: edit current scene
-            </button>
-          </div>
-        )}
-      </div>
+  const menuAction = (
+    <div className="menuControls" ref={menuWrapperRef}>
+      <button
+        type="button"
+        className="sceneActionButton sceneActionButton--menu"
+        aria-haspopup="true"
+        aria-expanded={isMenuOpen}
+        onClick={handleMenuToggle}
+        aria-label="Game menu"
+      >
+        <span className="menuTriggerDots" aria-hidden="true" />
+      </button>
+      {isMenuOpen && (
+        <div className="appMenu" role="menu" aria-label="Game menu">
+          <button type="button" className="menuItem" onClick={handleNewGame}>
+            New game
+          </button>
+          <button
+            type="button"
+            className="menuItem"
+            onClick={handleOpenSceneEditor}
+          >
+            DEV: edit current scene
+          </button>
+        </div>
+      )}
     </div>
   );
 
@@ -154,7 +151,6 @@ const App = () => {
     return (
       <>
         <div className="appStack">
-          {menu}
           <main className="appShell">
             <section className="panel">
               <p>No scenes registered yet. Add one in src/data/scenes.ts.</p>
@@ -174,7 +170,6 @@ const App = () => {
   return (
     <>
       <div className="appStack">
-        {menu}
         <main className="appShell">
           <section className="panel panel--flush" aria-label="Scene view">
             <SceneView
@@ -185,6 +180,7 @@ const App = () => {
               descriptionText={sceneDescriptionText}
               interactions={availableInteractions}
               onInteractionSelect={handleInteraction}
+              menuAction={menuAction}
             />
           </section>
         </main>

@@ -46,37 +46,6 @@
   display: flex;
 }
 
-.menuTrigger {
-  appearance: none;
-  border: 1px solid rgba(0, 255, 122, 0.25);
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.25);
-  color: rgba(215, 255, 231, 0.92);
-  padding: 7px 14px;
-  font-size: 0.8rem;
-  letter-spacing: 0.02em;
-  font-family: var(--mono);
-  cursor: pointer;
-  transition:
-    border-color 120ms ease,
-    background 120ms ease,
-    transform 120ms ease;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-transform: uppercase;
-}
-
-.menuTrigger:hover,
-.menuTrigger:focus-visible {
-  border-color: rgba(0, 255, 122, 0.6);
-  background: rgba(0, 0, 0, 0.45);
-}
-
-.menuTrigger:active {
-  transform: translateY(1px);
-}
-
 .appMenu {
   position: fixed;
   top: 50%;
@@ -165,22 +134,8 @@
   overflow-y: auto;
 }
 
-.menuGlobalSlot {
-  width: 100%;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 0 16px;
-  display: flex;
-  justify-content: flex-end;
-}
-
 @media (max-width: 600px) {
   .appShell {
     padding: 12px;
-  }
-
-  .menuGlobalSlot {
-    padding: 0 12px;
-    justify-content: flex-start;
   }
 }
